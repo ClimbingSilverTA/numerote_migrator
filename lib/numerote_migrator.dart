@@ -23,15 +23,18 @@ class NumeroteMigrator {
   }
 
   Future<Map<String, Label>> extractLabels() async {
-    return await _useDatabase((db) async {
+    return _useDatabase((db) async {
       final results = await db.runSelect("SELECT * from labels", []);
       final Map<String, Label> labels = {};
       for (final map in results) {
-        final id = map['id'] as String;
-        final label = Label.create(name: map['name'] as String).copyWith(
-          createdAtMillis: map['last_updated'] as int,
-        );
+        final id = map['id'] as String?;
+        final name = map['name'] as String?;
+        final lastUpdated = map['last_updated'] as int?;
+        if (id == null || name == null || lastUpdated == null) continue;
 
+        final label = Label.create(name: name).copyWith(
+          createdAtMillis: lastUpdated,
+        );
         labels[id] = label;
       }
       return labels;
@@ -48,7 +51,7 @@ class NumeroteMigrator {
   }
 
   Future<bool> get hasLegacyData async =>
-      await _dbFile.then((value) => value.existsSync());
+      _dbFile.then((value) => value.existsSync());
 }
 
 class _WatermelonExecutor extends QueryExecutorUser {
