@@ -7,11 +7,13 @@ import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 
 class NumeroteMigrator {
-  // TODO: Add a mechanism to pass an instance of NumeroteCore
   NumeroteMigrator({
+    required this.core,
     this.testing = false,
     this.databaseName = 'watermelon.db',
   });
+
+  final NumeroteCore core;
   final bool testing;
   final String databaseName;
 

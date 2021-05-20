@@ -1,10 +1,14 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:numerote_core/numerote_core.dart';
 import 'package:numerote_migrator/numerote_migrator.dart';
 
 void main() {
   group('Simulated migration', () {
+    final core = NumeroteCore.sql(testing: true);
+
     test('Ensure hasLegacyData returns true', () async {
       final migrator = NumeroteMigrator(
+        core: core,
         testing: true,
         databaseName: 'en.db',
       );
@@ -14,6 +18,7 @@ void main() {
 
     test('Try retrieving labels from old database', () async {
       final migrator = NumeroteMigrator(
+        core: core,
         testing: true,
         databaseName: 'en.db',
       );
