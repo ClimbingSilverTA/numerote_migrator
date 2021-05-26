@@ -25,6 +25,34 @@ class NumeroteMigrator {
     return result;
   }
 
+  Future<void> runMigration({int chunkSize = 50}) async {
+    final labelsMap = await extractLabels();
+
+    for (final label in labelsMap.values.toList()) {
+      await core.labels.save(label);
+    }
+
+    var offset = 0;
+    var notes = await extractNotes(
+      labelsMap: labelsMap,
+      offset: offset,
+      limit: chunkSize,
+    );
+
+    while (notes.isNotEmpty) {
+      for (final note in notes) {
+        await core.notes.save(note);
+      }
+
+      offset += notes.length;
+      notes = await extractNotes(
+        labelsMap: labelsMap,
+        offset: offset,
+        limit: chunkSize,
+      );
+    }
+  }
+
   Future<Map<String, Label>> extractLabels() async {
     return _useDatabase((db) async {
       final results = await db.runSelect("SELECT * FROM labels", []);

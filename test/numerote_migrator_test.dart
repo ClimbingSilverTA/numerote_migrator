@@ -53,5 +53,28 @@ void main() {
           "There’s not much really left to say about my current options but that’s just how things are I suppose");
       expect(optionsNote.labels.first.name, "Ramblings");
     });
+
+    test('Try running actual migration', () async {
+      final migrator = NumeroteMigrator(
+        core: core,
+        testing: true,
+        databaseName: 'en.db',
+      );
+
+      await migrator.runMigration();
+      final labels = await core.labels.find();
+      expect(labels.length, 2);
+
+      final notes = await core.notes.find();
+      expect(notes.length, 3);
+
+      await core.notes
+          .find(label: labels.first)
+          .then((value) => expect(value.isNotEmpty, true));
+
+      await core.notes
+          .find(label: labels.last)
+          .then((value) => expect(value.isNotEmpty, true));
+    });
   });
 }
