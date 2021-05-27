@@ -58,7 +58,7 @@ void main() {
       final migrator = NumeroteMigrator(
         core: core,
         testing: true,
-        databaseName: 'en.db',
+        databaseName: 'ja.db',
       );
 
       await migrator.runMigration();
