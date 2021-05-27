@@ -67,39 +67,14 @@ class NumeroteMigrator {
     int limit = 10,
     int offset = 0,
   }) async {
-    return _useDatabase((db) async {
-      final List<Note> notes = [];
-
-      final results = await db.runSelect(
+    return _useDatabase(
+      (db) async => db.runSelect(
         "SELECT notes.id, contents, timestamp, label_id FROM notes LEFT JOIN note_labels on note_labels.note_id = notes.id LIMIT ? OFFSET ?",
         [limit, offset],
-      );
-
-      for (final map in results) {
-        final contents = map['contents'] as String?;
-        final timestamp = map['timestamp'] as int?;
-        final labelId = map['label_id'] as String?;
-        if (contents == null || timestamp == null) continue;
-
-        var note = Note.create(contents: contents).copyWith(
-          createdAtMillis: timestamp,
-          updatedAtMillis: timestamp,
-        );
-
-        if (labelId != null &&
-            labelId != 'null' &&
-            labelsMap.containsKey(labelId)) {
-          final label = labelsMap[labelId];
-          if (label != null) {
-            note = note.copyWith(labels: [label]);
-          }
-        }
-
-        notes.add(note);
-      }
-
-      return notes;
-    });
+      ).then(
+        (value) => value.toNotesList(labelsMap: labelsMap),
+      ),
+    );
   }
 
   Future<File> get _dbFile async {

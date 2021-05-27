@@ -16,6 +16,33 @@ extension ResultsListExt on List<Map<String, Object?>> {
     }
     return labels;
   }
+
+  List<Note> toNotesList({required Map<String, Label> labelsMap}) {
+    final List<Note> notes = [];
+    for (final map in this) {
+      final contents = map['contents'] as String?;
+      final timestamp = map['timestamp'] as int?;
+      final labelId = map['label_id'] as String?;
+      if (contents == null || timestamp == null) continue;
+
+      var note = Note.create(contents: contents).copyWith(
+        createdAtMillis: timestamp,
+        updatedAtMillis: timestamp,
+      );
+
+      if (labelId != null &&
+          labelId != 'null' &&
+          labelsMap.containsKey(labelId)) {
+        final label = labelsMap[labelId];
+        if (label != null) {
+          note = note.copyWith(labels: [label]);
+        }
+      }
+
+      notes.add(note);
+    }
+    return notes;
+  }
 }
 
 class MigratorExtensions {}
