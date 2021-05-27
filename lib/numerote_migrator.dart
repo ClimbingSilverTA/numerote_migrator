@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:moor/moor.dart';
 import 'package:moor/ffi.dart';
 import 'package:numerote_core/numerote_core.dart';
+import 'package:numerote_migrator/src/extensions.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 
@@ -54,22 +55,11 @@ class NumeroteMigrator {
   }
 
   Future<Map<String, Label>> extractLabels() async {
-    return _useDatabase((db) async {
-      final results = await db.runSelect("SELECT * FROM labels", []);
-      final Map<String, Label> labels = {};
-      for (final map in results) {
-        final id = map['id'] as String?;
-        final name = map['name'] as String?;
-        final lastUpdated = map['last_updated'] as int?;
-        if (id == null || name == null || lastUpdated == null) continue;
-
-        final label = Label.create(name: name).copyWith(
-          createdAtMillis: lastUpdated,
-        );
-        labels[id] = label;
-      }
-      return labels;
-    });
+    return _useDatabase(
+      (db) async => db.runSelect("SELECT * FROM labels", []).then(
+        (value) => value.toIdMap(),
+      ),
+    );
   }
 
   Future<List<Note>> extractNotes({
