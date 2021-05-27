@@ -1,7 +1,7 @@
 import 'package:numerote_core/numerote_core.dart';
 
 extension ResultsListExt on List<Map<String, Object?>> {
-  Map<String, Label> toIdMap() {
+  Map<String, Label> toLabelIdMap() {
     final Map<String, Label> labels = {};
     for (final map in this) {
       final id = map['id'] as String?;

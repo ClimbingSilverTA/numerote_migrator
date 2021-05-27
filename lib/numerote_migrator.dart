@@ -57,7 +57,7 @@ class NumeroteMigrator {
   Future<Map<String, Label>> extractLabels() async {
     return _useDatabase(
       (db) async => db.runSelect("SELECT * FROM labels", []).then(
-        (value) => value.toIdMap(),
+        (value) => value.toLabelIdMap(),
       ),
     );
   }
