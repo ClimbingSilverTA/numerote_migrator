@@ -26,7 +26,12 @@ class NumeroteMigrator {
     return result;
   }
 
-  Future<void> runMigration({int chunkSize = 50}) async {
+  Future<void> runMigration({
+    int chunkSize = 50,
+    bool deleteExistingData = false,
+  }) async {
+    if (deleteExistingData) await core.nuke();
+
     final labelsMap = await extractLabels();
 
     for (final label in labelsMap.values.toList()) {
