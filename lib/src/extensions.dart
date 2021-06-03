@@ -11,6 +11,7 @@ extension ResultsListExt on List<Map<String, Object?>> {
 
       final label = Label.create(name: name).copyWith(
         createdAtMillis: lastUpdated,
+        updatedAtMillis: lastUpdated,
       );
       labels[id] = label;
     }
