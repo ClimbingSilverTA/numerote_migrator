@@ -129,16 +129,16 @@ packages:
       name: moor
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.3.0"
+    version: "4.3.2"
   numerote_core:
     dependency: transitive
     description:
       path: "."
-      ref: "v0.5.0"
-      resolved-ref: cd36e51d855db6c9ddea1524c9d0b2c7e0a049e1
+      ref: "v1.0.0"
+      resolved-ref: c84cba2057cb811e99a9deaedb5f7fad139ae35d
       url: "https://github.com/ClimbingSilverTA/numerote_core.git"
     source: git
-    version: "0.5.0"
+    version: "1.0.0"
   numerote_migrator:
     dependency: "direct main"
     description:
