@@ -14,7 +14,7 @@ dependencies:
   numerote_core:
     git:
       url: https://github.com/ClimbingSilverTA/numerote_core.git
-      ref: v1.0.0  
+      ref: v1.1.0  
 
 dev_dependencies:
   flutter_test:

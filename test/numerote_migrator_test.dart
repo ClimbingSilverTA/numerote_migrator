@@ -78,5 +78,22 @@ void main() {
         expect(index, greaterThan(-1));
       }
     });
+
+    test('Run migration with large dataset(~1400 records, ~300 labels)',
+        () async {
+      final migrator = NumeroteMigrator(
+        core: core,
+        testing: true,
+        databaseName: 'large_dataset_labels.db',
+      );
+
+      await migrator.runMigration();
+      await core.labels
+          .find(limit: 1000)
+          .then((value) => expect(value, hasLength(300)));
+      await core.notes
+          .find(limit: 2000)
+          .then((value) => expect(value, hasLength(1400)));
+    });
   });
 }
