@@ -37,9 +37,7 @@ class NumeroteMigrator {
     );
 
     while (notes.isNotEmpty) {
-      for (final note in notes) {
-        await core.notes.save(note);
-      }
+      await core.notes.saveAll(notes);
 
       offset += notes.length;
       notes = await _legacyDb.extractNotes(
