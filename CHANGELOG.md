@@ -1,3 +1,6 @@
-## 0.0.1
+## 1.1.0
+- Implemented `saveAll` methods for migration.
 
-* TODO: Describe initial release.
+## 1.0.0
+- Upgrade to first stable release.
+- Changed to export NumeroteCore.
