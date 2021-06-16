@@ -24,10 +24,7 @@ class NumeroteMigrator {
     if (deleteExistingData) await core.nuke();
 
     final labelsMap = await _legacyDb.extractLabels();
-
-    for (final label in labelsMap.values.toList()) {
-      await core.labels.save(label);
-    }
+    await core.labels.saveAll(labelsMap.values.toList());
 
     var offset = 0;
     var notes = await _legacyDb.extractNotes(
