@@ -134,11 +134,11 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "v1.1.0"
-      resolved-ref: "1d4a592f61075e1126a494db7f22030ce6b5ba2c"
+      ref: "v1.2.0"
+      resolved-ref: c51a695183beb81afb020ddfffa669821f139416
       url: "https://github.com/ClimbingSilverTA/numerote_core.git"
     source: git
-    version: "1.1.0"
+    version: "1.2.0"
   numerote_migrator:
     dependency: "direct main"
     description:
