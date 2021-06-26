@@ -33,11 +33,11 @@ void main() {
       expect(notes.length, 3);
 
       await core.notes
-          .find(label: labels.first)
+          .find(labelId: labels.first.documentId)
           .then((value) => expect(value.isNotEmpty, true));
 
       await core.notes
-          .find(label: labels.last)
+          .find(labelId: labels.last.documentId)
           .then((value) => expect(value.isNotEmpty, true));
     });
 
