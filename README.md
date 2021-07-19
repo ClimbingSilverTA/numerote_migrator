@@ -1,15 +1,7 @@
 # numerote_migrator
 
-A new flutter plugin project.
+This is a package I created while developing [Numerote](https://apps.apple.com/us/app/numerote-word-count-note/id1507853252), a simple notepad app written with Flutter.
 
-## Getting Started
+I wrote it because I originally created the app with React Native(Expo) and I used [WatermelonDB](https://github.com/Nozbe/WatermelonDB) - and needed to write some logic to migrate away from it(I still think Expo and WatermelonDB are great by the way).
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
+This package depends on another package [numerote_core](https://github.com/ClimbingSilverTA/numerote_core) that includes the models used and an in-memory and SQLite adapters(created with [moor](https://moor.simonbinder.eu/)).
