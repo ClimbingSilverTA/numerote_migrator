@@ -1,8 +1,11 @@
+## 1.4.0
+- Upgraded `numerote_core` package.
+
 ## 1.3.0
-- Upgrade `numerote_core` package and fix tests.
+- Upgraded `numerote_core` package and fixed tests.
 
 ## 1.2.0
-- Upgrade `numerote_core` package.
+- Upgraded `numerote_core` package.
 
 ## 1.1.0
 - Implemented `saveAll` methods for migration.
