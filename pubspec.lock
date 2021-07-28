@@ -134,8 +134,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "v1.4.0"
-      resolved-ref: "7e1bb2e515e6f6e3b463556f224475e9a773e300"
+      ref: "feature/remove_platform_folders"
+      resolved-ref: "513e5e22541622c303b3be860465b392563973f5"
       url: "https://github.com/ClimbingSilverTA/numerote_core.git"
     source: git
     version: "1.4.0"

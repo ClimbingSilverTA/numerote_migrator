@@ -14,7 +14,7 @@ dependencies:
   numerote_core:
     git:
       url: https://github.com/ClimbingSilverTA/numerote_core.git
-      ref: v1.4.0  
+      ref: feature/remove_platform_folders  
 
 dev_dependencies:
   flutter_test:
