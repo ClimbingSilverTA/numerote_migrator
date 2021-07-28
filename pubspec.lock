@@ -134,11 +134,11 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "v1.4.0"
-      resolved-ref: "7e1bb2e515e6f6e3b463556f224475e9a773e300"
+      ref: "v1.5.0"
+      resolved-ref: "8870a73026dc554753711b961ddc9e27cbd36488"
       url: "https://github.com/ClimbingSilverTA/numerote_core.git"
     source: git
-    version: "1.4.0"
+    version: "1.5.0"
   path:
     dependency: transitive
     description:
