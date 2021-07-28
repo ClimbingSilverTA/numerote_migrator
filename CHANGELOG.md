@@ -1,3 +1,7 @@
+## 1.5.0
+- Upgraded `numerote_core` package.
+- Removed unnecessary platform folders.
+
 ## 1.4.0
 - Upgraded `numerote_core` package.
 
